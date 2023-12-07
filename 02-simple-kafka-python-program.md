@@ -74,6 +74,7 @@ EOF
 > A Kafka consumer is an application that reads and acts on Kafka events.
 
 3. Populate a file called **myconsumer.py**.
+```
 cat << EOF > myconsumer.py
 from kafka import KafkaConsumer
 import json
@@ -92,6 +93,7 @@ def consume_messages():
 if __name__ == "__main__":
     consume_messages()
 EOF
+```
 
 ## C. Test Event Handling
 
