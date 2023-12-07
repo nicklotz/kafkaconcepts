@@ -23,7 +23,7 @@ python3 -m pip install kafka-python
 
 4. Create a new topics called **myapptopic**.
 ```
-~/kafka_2.13-3.8.0/bin/kafka-topics.sh --create --topic python-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+~/kafka_2.13-3.8.0/bin/kafka-topics.sh --create --topic myapptopic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
 ```
 
 > [!NOTE]
