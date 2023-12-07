@@ -44,4 +44,7 @@ bin/kafka-storage.sh format -t $KAFKA_CLUSTER_ID -c config/kraft/server.properti
 bin/kafka-server-start.sh -daemon config/kraft/server.properties
 ```
 
-
+7. If desied, stop the Kafka server.
+```
+/bin/kafka-server-stop.sh
+```
