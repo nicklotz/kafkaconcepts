@@ -21,7 +21,7 @@ python3 -m pip install kafka-python
 ~/kafka_2.13-3.8.0/bin/kafka-server-start.sh -daemon config/server.properties
 ```
 
-4. Create a new topics called **myapptopic**.
+4. Create a new topic called **myapptopic**.
 ```
 ~/kafka_2.13-3.8.0/bin/kafka-topics.sh --create --topic myapptopic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
 ```
@@ -47,7 +47,7 @@ cd ~/mykafkapythonapp
 ```
 
 2. Populate a file called **myproducer.py**.
-```
+```python
 cat << EOF > myproducer.py
 from kafka import KafkaProducer
 import json
@@ -58,12 +58,12 @@ producer = KafkaProducer(bootstrap_servers='localhost:9092',
 
 def send_message(topic, key, value):
     producer.send(topic, key=key.encode('utf-8'), value=value)
-    producer.flush()  # Ensure the message is sent
+    producer.flush() 
     print(f"sent message to {topic}: {value}")
 
 if __name__ == "__main__":
     name = input("Please enter your first name: ")
-    numGreetings = input("Enter the number of greetings to send)
+    numGreetings = int(input("Enter the number of greetings to send:" ))
     for i in range(numGreetings):
         message = {'number': i, 'name': name, 'message': f'This is greeting {i} to {name}'}
         send_message('myapptopic', f'key-{i}', message)
@@ -74,12 +74,12 @@ EOF
 > A Kafka consumer is an application that reads and acts on Kafka events.
 
 3. Populate a file called **myconsumer.py**.
-```
+```python
 cat << EOF > myconsumer.py
 from kafka import KafkaConsumer
 import json
 
-consumer = KafkaConsumer('myapptopic)',
+consumer = KafkaConsumer('myapptopic',
     bootstrap_servers='localhost:9092',
     auto_offset_reset='earliest', 
     enable_auto_commit=True,
@@ -103,6 +103,9 @@ python3 myproducer.py
 ``` 
 
 2. In another terminal screen, run the consumer app.
+```
+python3 myconsumer.py
+```
 
 > What do the outputs of both the producer and consumer show?
 
@@ -115,5 +118,5 @@ python3 myproducer.py
 
 2. Delete the Kafka topic if desired.
 ```
-~/kafka_2.13-3.8.0/bin/kafka-topics.sh --delete --topic python-topic --bootstrap-server localhost:9092
+~/kafka_2.13-3.8.0/bin/kafka-topics.sh --delete --topic myapptopic --bootstrap-server localhost:9092
 ```
