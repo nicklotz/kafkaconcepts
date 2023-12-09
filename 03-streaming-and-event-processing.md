@@ -1,4 +1,4 @@
-03: Streaming and Event Processing
+# 03: Streaming and Event Processing
 
 > We will now implement software to perform stream processing on our Kafka events. We will use a library called **faust**, which is a Python fork of **Kafka streams**. 
 
@@ -8,15 +8,15 @@
 
 1. Install faust.
 ```
-pip3 install faust
+pip3 install faust-streaming
 ```
 
 2. Verify the installation in your environment.
 ```
-pip3 show faust
+pip3 show faust-streaming
 ```
 
-##. Create Topics for Stream Processing
+## B. Create Topics for Stream Processing
 
 > Now we'll create two topics, an "input topic" for ingesting Kafka events, and an "output topic" for storing the results of the event processing.
 
